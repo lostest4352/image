@@ -1,6 +1,6 @@
 # image
 
-A new Flutter project.
+A simple image viewer. Learning flutter basics.
 
 ## Getting Started
 
