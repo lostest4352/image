@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:photo_view/photo_view.dart';
 
 import 'pages/image_page.dart';
 
@@ -41,6 +40,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List files = [File('')];
 
+  // RangeValues rangeValues = RangeValues(0, 1);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,8 +74,14 @@ class _MainPageState extends State<MainPage> {
               },
             ),
           ),
+          SliverToBoxAdapter(
+            child: BottomNavigationBar(
+              items: bottomBarItems(),
+            ),
+          ),
         ],
       ),
+
       drawer: SafeArea(
         child: Drawer(
           child: Column(
@@ -138,5 +145,23 @@ class _MainPageState extends State<MainPage> {
         ),
       ),
     );
+  }
+
+  List<BottomNavigationBarItem> bottomBarItems() {
+    return [
+      const BottomNavigationBarItem(
+        label: 'Home',
+        icon: Icon(
+          Icons.home,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.amber,
+      ),
+      const BottomNavigationBarItem(
+        label: 'Add',
+        icon: Icon(Icons.add, color: Colors.white),
+        backgroundColor: Colors.amber,
+      ),
+    ];
   }
 }
