@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:image/main.dart';
+
+import '../models/theme_settings.dart';
 
 
 class SettingsPage extends StatelessWidget {
@@ -19,13 +20,14 @@ class SettingsPage extends StatelessWidget {
       ),
       body: Consumer(
         builder: (context, ref, child) {
+          final darkThemeToggle = ref.watch(themeProvider);
           return Column(
             children: [
               Card(
                 child: SwitchListTile(
                   title: const Text("Dark Theme"),
                   
-                  value: false,
+                  value: darkThemeToggle,
                   onChanged: (value) {
                     ref.read(themeProvider.notifier).toggle();
                   },

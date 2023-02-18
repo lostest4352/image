@@ -6,8 +6,11 @@ ThemeData lightTheme = ThemeData.light();
 
 ThemeData darkTheme = ThemeData.dark();
 
+final themeProvider = StateNotifierProvider<ThemeSettingsNotifier, bool>(
+    (ref) => ThemeSettingsNotifier());
+
 class ThemeSettingsNotifier extends StateNotifier<bool> {
-  ThemeSettingsNotifier() : super(false) {
+  ThemeSettingsNotifier() : super(true) {
     initializePrefs();
   }
 
