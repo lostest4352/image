@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   file_picker: ^5.2.4
   photo_view: ^0.14.0
+  shared_preferences: ^2.0.17
+  flutter_riverpod: ^2.2.0
  
 
 dev_dependencies:
