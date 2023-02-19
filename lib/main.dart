@@ -9,7 +9,7 @@ void main() {
   // Dark navigation bar. Code may give issues.
   if (Platform.isAndroid) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.black,
+      systemNavigationBarColor: Color.fromARGB(61, 0, 0, 0),
     ));
   }
   runApp(const ProviderScope(child: MyApp()));
