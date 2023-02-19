@@ -14,31 +14,33 @@ class ImagePage extends StatefulWidget {
 class _ImagePageState extends State<ImagePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            title: const Text('Image'),
-            toolbarHeight: MediaQuery.of(context).size.height * 0.08,
-            leading: IconButton(
-                onPressed: () {
-                  return Navigator.pop(context);
-                },
-                icon: const Icon(Icons.arrow_back)),
-          ),
-          SliverFillRemaining(
-            child: PageView(
-              
-              children: [
-                // InteractiveViewer(child: Image.file(widget.image)),
-                PhotoView(imageProvider: FileImage(widget.image)),
-                
-                // child: Image.file(widget.image)),
-              ],
+    return SafeArea(
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              title: const Text('Image'),
+              toolbarHeight: MediaQuery.of(context).size.height * 0.08,
+              leading: IconButton(
+                  onPressed: () {
+                    return Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_back)),
             ),
-          ),
-        ],
-        
+            SliverFillRemaining(
+              child: PageView(
+                
+                children: [
+                  // InteractiveViewer(child: Image.file(widget.image)),
+                  PhotoView(imageProvider: FileImage(widget.image)),
+                  
+                  // child: Image.file(widget.image)),
+                ],
+              ),
+            ),
+          ],
+          
+        ),
       ),
     );
   }
