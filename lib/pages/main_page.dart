@@ -37,8 +37,7 @@ class _MainPageState extends State<MainPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return InteractiveViewer(
-                                child: ImagePage(image: files[index]));
+                            return ImagePage(image: files[index]);
                           },
                         ),
                       );
