@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image/routes/routes.dart';
+import 'package:photo_view/photo_view.dart';
 
 import 'image_page.dart';
 
@@ -28,21 +29,28 @@ class _MainPageState extends State<MainPage> {
             ),
             SliverFillRemaining(
               child: PageView.builder(
-                // scrollDirection: Axis.vertical,
                 itemCount: files.length,
                 itemBuilder: (context, index) {
+                  precacheImage(FileImage(files[index]), context);
                   return GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ImagePage(image: files[index]);
-                          },
-                        ),
-                      );
-                    },
-                    child: Image.file(files[index]),
+                    // onTap: () {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) {
+                    //         return ImagePage(image: files[index]);
+                    //       },
+                    //     ),
+                    //   );
+                    // },
+                    // child: Image.file(files[index]),
+                    // imageProvider: FileImage(files[index]),
+
+                    child: PhotoView(
+                      backgroundDecoration: const BoxDecoration(color: Colors.black12),
+                      filterQuality: FilterQuality.high,
+                      imageProvider: FileImage(files[index]),
+                    ),
                   );
                 },
               ),
