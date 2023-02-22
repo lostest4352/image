@@ -48,11 +48,11 @@ class _MainPageState extends State<MainPage> {
                 },
               ),
             ),
-            SliverToBoxAdapter(
-              child: BottomNavigationBar(
-                items: bottomBarItems(),
-              ),
-            ),
+            // SliverToBoxAdapter(
+            //   child: BottomNavigationBar(
+            //     items: bottomBarItems(),
+            //   ),
+            // ),
           ],
         ),
         drawer: SafeArea(
@@ -130,21 +130,21 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  List<BottomNavigationBarItem> bottomBarItems() {
-    return [
-      const BottomNavigationBarItem(
-        label: 'Home',
-        icon: Icon(
-          Icons.home,
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.amber,
-      ),
-      const BottomNavigationBarItem(
-        label: 'Add',
-        icon: Icon(Icons.add, color: Colors.white),
-        backgroundColor: Colors.amber,
-      ),
-    ];
-  }
+  // List<BottomNavigationBarItem> bottomBarItems() {
+  //   return [
+  //     const BottomNavigationBarItem(
+  //       label: 'Home',
+  //       icon: Icon(
+  //         Icons.home,
+  //         color: Colors.white,
+  //       ),
+  //       backgroundColor: Colors.amber,
+  //     ),
+  //     const BottomNavigationBarItem(
+  //       label: 'Add',
+  //       icon: Icon(Icons.add, color: Colors.white),
+  //       backgroundColor: Colors.amber,
+  //     ),
+  //   ];
+  // }
 }
