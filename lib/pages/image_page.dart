@@ -12,6 +12,8 @@ class ImagePage extends StatefulWidget {
 }
 
 class _ImagePageState extends State<ImagePage> {
+  double _scale = 1.0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -29,19 +31,47 @@ class _ImagePageState extends State<ImagePage> {
             ),
             SliverFillRemaining(
               child: PageView(
-                
                 children: [
                   // InteractiveViewer(child: Image.file(widget.image)),
-                  PhotoView(imageProvider: FileImage(widget.image)),
-                  
-                  // child: Image.file(widget.image)),
+                  // PhotoView(imageProvider: FileImage(widget.image)),
+
+                  GestureDetector(
+                    onDoubleTap: () {
+                      
+                      final double maxScale =4.0;
+                      final double minScale = 1.0;
+
+                      double currentScale = _scale;
+
+                      if (currentScale > minScale) {
+                        currentScale = minScale;
+                      } else {
+                        currentScale = currentScale * 2.0;
+                      }
+
+                      // currentScale = currentScale * 2.0;
+
+                      currentScale = currentScale.clamp(minScale, maxScale);
+
+                      setState(() {
+                        _scale = currentScale;
+                      }); 
+                    },
+                    child: Transform.scale(
+                      scale: _scale,
+                      child: Image.file(
+                        widget.image,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
-          
         ),
       ),
     );
   }
 }
+
+
