@@ -8,9 +8,11 @@ import 'package:image/routes/routes.dart';
 void main() {
   // Dark navigation bar. Code may give issues.
   if (Platform.isAndroid) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      systemNavigationBarColor: Color.fromARGB(61, 0, 0, 0),
-    ));
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+      ),
+    );
   }
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -22,6 +24,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var darkMode = ref.watch(themeProvider);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: darkMode ? darkTheme : lightTheme,
       initialRoute: RouteManager.mainPage,
       onGenerateRoute: RouteManager.generateRoute,

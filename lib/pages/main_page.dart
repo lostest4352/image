@@ -27,7 +27,7 @@ class _MainPageState extends State<MainPage> {
               toolbarHeight: MediaQuery.of(context).size.height * 0.08,
             ),
             SliverFillRemaining(
-              child: PageView.builder(
+              child:  PageView.builder(
                 // scrollDirection: Axis.vertical,
                 itemCount: files.length,
                 itemBuilder: (context, index) {
