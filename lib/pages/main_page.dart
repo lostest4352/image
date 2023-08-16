@@ -15,7 +15,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List files = [File('')];
+  late List<FileSystemEntity> files;
+
+  @override
+  void initState() {
+    super.initState();
+    files = [];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +29,12 @@ class _MainPageState extends State<MainPage> {
       child: Scaffold(
         body: CustomScrollView(
           slivers: [
-            SliverAppBar(
-              toolbarHeight: MediaQuery.of(context).size.height * 0.08,
+            const SliverAppBar(
+              toolbarHeight: 45,
+              title: Text("Image app"),
             ),
             SliverFillRemaining(
-              child:  PageView.builder(
+              child: PageView.builder(
                 // scrollDirection: Axis.vertical,
                 itemCount: files.length,
                 itemBuilder: (context, index) {
@@ -38,12 +45,12 @@ class _MainPageState extends State<MainPage> {
                         MaterialPageRoute(
                           builder: (context) {
                             return InteractiveViewer(
-                                child: ImagePage(image: files[index]));
+                                child: ImagePage(image: files[index] as File));
                           },
                         ),
                       );
                     },
-                    child: Image.file(files[index]),
+                    child: Image.file(files[index] as File),
                   );
                 },
               ),
@@ -62,28 +69,32 @@ class _MainPageState extends State<MainPage> {
                 // For folder
                 ListTile(
                   onTap: () async {
-                    String? result =
+                    String? selectedDirectory =
                         await FilePicker.platform.getDirectoryPath();
 
-                    if (result != null) {
+                    if (selectedDirectory != null) {
                       setState(
                         () {
                           files.clear();
-                          Directory(result).listSync().forEach(
-                            (f) {
-                              if (f is File && f.path.endsWith('.jpg') ||
-                                  f.path.endsWith('.jpeg') ||
-                                  f.path.endsWith('.png') ||
-                                  f.path.endsWith('.gif')) {
-                                files.add(f);
-                              }
-                            },
-                          );
+
+                          //
+                          final directoryFiles =
+                              Directory(selectedDirectory).listSync();
+                          for (final file in directoryFiles) {
+                            debugPrint(file.toString());
+                            if (file.path.endsWith('.jpg') ||
+                                file.path.endsWith('.jpeg') ||
+                                file.path.endsWith('.png') ||
+                                file.path.endsWith('.gif')) {
+                              files.add(file);
+                            }
+                          }
                         },
                       );
                     }
-                    // Navigator.pop(context);
-                    if (context.mounted) Navigator.of(context).pop();
+
+                    if (!mounted) return;
+                    Navigator.of(context).pop();
                   },
                   leading: const Icon(
                     Icons.add,
@@ -107,8 +118,9 @@ class _MainPageState extends State<MainPage> {
                         },
                       );
                     }
-                    // Navigator.pop(context);
-                    if (context.mounted) Navigator.of(context).pop();
+
+                    if (!mounted) return;
+                    Navigator.of(context).pop();
                   },
                   leading: const Icon(
                     Icons.add,
