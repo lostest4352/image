@@ -2,13 +2,10 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:image/routes/routes.dart';
-
 import 'image_page.dart';
 
 class MainPage extends StatefulWidget {
-  final int? index;
-
-  const MainPage({this.index, super.key});
+  const MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();

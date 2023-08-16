@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image/pages/settings_page.dart';
-
 import '../pages/main_page.dart';
-
 
 class RouteManager {
   static const String mainPage = '/';
@@ -19,11 +17,8 @@ class RouteManager {
         return MaterialPageRoute(
           builder: (context) => const SettingsPage(),
         );
-      
-
       default:
         throw const FormatException("Route not found");
-        
     }
   }
 }

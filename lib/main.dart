@@ -6,7 +6,6 @@ import 'package:image/models/theme_settings.dart';
 import 'package:image/routes/routes.dart';
 
 void main() {
-  // Dark navigation bar. Code may give issues.
   if (Platform.isAndroid) {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(

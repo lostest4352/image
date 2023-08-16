@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-// import 'package:photo_view/photo_view.dart';
 
 class ImagePage extends StatefulWidget {
   final File image;
@@ -29,17 +27,12 @@ class _ImagePageState extends State<ImagePage> {
             ),
             SliverFillRemaining(
               child: PageView(
-                
                 children: [
                   InteractiveViewer(child: Image.file(widget.image)),
-                  // PhotoView(imageProvider: FileImage(widget.image)),
-                  
-                  // child: Image.file(widget.image)),
                 ],
               ),
             ),
           ],
-          
         ),
       ),
     );
