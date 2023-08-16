@@ -18,22 +18,24 @@ class SettingsPage extends StatelessWidget {
               },
               icon: const Icon(Icons.arrow_back)),
         ),
-        body: Consumer(builder: (context, ref, child) {
-          final darkThemeToggle = ref.watch(themeProvider);
-          return Column(
-            children: [
-              Card(
-                child: SwitchListTile(
-                  title: const Text("Dark Theme"),
-                  value: darkThemeToggle,
-                  onChanged: (value) {
-                    ref.read(themeProvider.notifier).toggle();
-                  },
-                ),
-              )
-            ],
-          );
-        }),
+        body: Consumer(
+          builder: (context, ref, child) {
+            final darkThemeToggle = ref.watch(themeProvider);
+            return Column(
+              children: [
+                Card(
+                  child: SwitchListTile(
+                    title: const Text("Dark Theme"),
+                    value: darkThemeToggle,
+                    onChanged: (value) {
+                      ref.read(themeProvider.notifier).toggle();
+                    },
+                  ),
+                )
+              ],
+            );
+          },
+        ),
       ),
     );
   }

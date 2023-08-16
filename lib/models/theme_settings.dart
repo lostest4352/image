@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-ThemeData lightTheme = FlexThemeData.light();
+ThemeData lightTheme = FlexThemeData.light(
+  scheme: FlexScheme.mandyRed,
+);
 
 ThemeData darkTheme = FlexThemeData.dark(
   scheme: FlexScheme.mandyRed,
